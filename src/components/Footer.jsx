@@ -28,7 +28,12 @@ export default function Footer() {
 
       <p>
         &copy; 2024{" "}
-        <a className="primeelements-link" href="">
+        <a
+          className="primeelements-link"
+          href="https://primeelements.pro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           PrimeElements
         </a>
         . All rights reserved.
