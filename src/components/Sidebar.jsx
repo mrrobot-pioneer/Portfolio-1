@@ -1,5 +1,5 @@
 import "../styles/sidebar.css";
-import React from "react";
+import { useEffect, useState } from "react";
 
 export default function Sidebar({
   home,
@@ -9,7 +9,7 @@ export default function Sidebar({
   projects,
   contact,
 }) {
-  const [isShown, setIsShown] = React.useState(false);
+  const [isShown, setIsShown] = useState(false);
 
   function showSidebar() {
     setIsShown(true);
@@ -18,6 +18,20 @@ export default function Sidebar({
   function hideSidebar() {
     setIsShown(false);
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isShown) {
+        setIsShown(false); // Hide sidebar when scrolling
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isShown]); // Only re-run the effect if 'show' changes
 
   return (
     <nav>

@@ -1,9 +1,10 @@
+import React, { useState, useEffect } from "react";
+import { useTheme } from "./ThemeContext";
 import "../styles/settings.css";
-import { useEffect, useState, useRef } from "react";
 
 export default function Settings() {
+  const { theme, mode, changeTheme, toggleMode } = useTheme();
   const [show, setShow] = useState(false);
-  const [mode, setMode] = useState("dark");
 
   const showSettings = () => setShow(true);
   const hideSettings = () => setShow(false);
@@ -11,7 +12,7 @@ export default function Settings() {
   useEffect(() => {
     const handleScroll = () => {
       if (show) {
-        setShow(false);
+        setShow(false); // Hide settings when scrolling
       }
     };
 
@@ -20,45 +21,7 @@ export default function Settings() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [show]);
-
-  useEffect(() => {
-    const darkModeLink = document.querySelector(".dark-mode");
-    const lightModeLink = document.querySelector(".light-mode");
-
-    if (darkModeLink && lightModeLink) {
-      if (mode === "dark") {
-        darkModeLink.removeAttribute("disabled");
-        lightModeLink.setAttribute("disabled", "true");
-        console.log("Dark mode enabled");
-      } else {
-        lightModeLink.removeAttribute("disabled");
-        darkModeLink.setAttribute("disabled", "true");
-        console.log("Light mode enabled");
-      }
-    } else {
-      console.log("Dark or light mode link not found");
-    }
-  }, [mode]);
-
-  const themeLinks = useRef([]);
-  useEffect(() => {
-    themeLinks.current = document.querySelectorAll(".theme-color");
-    console.log("Theme links found:", themeLinks.current);
-  }, []);
-
-  const activeTheme = (themeColor) => {
-    themeLinks.current.forEach((link) => {
-      console.log(link.classList, link.classList.contains(themeColor));
-      if (link.classList.contains(themeColor)) {
-        link.removeAttribute("disabled");
-        console.log(`${themeColor} theme enabled`);
-      } else {
-        link.setAttribute("disabled", "true");
-        console.log(`${link.classList} theme disabled`);
-      }
-    });
-  };
+  }, [show]); // Only re-run the effect if 'show' changes
 
   return (
     <div
@@ -76,23 +39,23 @@ export default function Settings() {
       <div className="colors-container">
         <div
           className="default-theme-color"
-          onClick={() => activeTheme("default-theme-color")}
+          onClick={() => changeTheme("default-theme")}
         ></div>
         <div
           className="theme-color-1"
-          onClick={() => activeTheme("theme-color-1")}
+          onClick={() => changeTheme("theme-1")}
         ></div>
         <div
           className="theme-color-2"
-          onClick={() => activeTheme("theme-color-2")}
+          onClick={() => changeTheme("theme-2")}
         ></div>
         <div
           className="theme-color-3"
-          onClick={() => activeTheme("theme-color-3")}
+          onClick={() => changeTheme("theme-3")}
         ></div>
         <div
           className="theme-color-4"
-          onClick={() => activeTheme("theme-color-4")}
+          onClick={() => changeTheme("theme-4")}
         ></div>
       </div>
 
@@ -103,8 +66,8 @@ export default function Settings() {
             className="toggler_input"
             id="toggler_check"
             type="checkbox"
-            checked={mode === "dark"}
-            onChange={() => setMode(mode === "dark" ? "light" : "dark")}
+            checked={mode === "dark-mode"}
+            onChange={toggleMode}
           />
           <label className="toggler_label" htmlFor="toggler_check">
             Toggle

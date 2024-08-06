@@ -12,6 +12,41 @@
   outline: none; /* Remove focus outline */
 }
 
+:root {
+  --main-color: rgb(0, 171, 240);
+  --bg-color: #081b29;
+  --second-bg-color: #112e42;
+  --text-color: #fff;
+}
+
+.dark-mode {
+  --bg-color: #081b29;
+  --second-bg-color: #112e42;
+  --text-color: #fff;
+}
+
+.light-mode {
+  --bg-color: #ffffffec;
+  --second-bg-color: #eee;
+  --text-color: #000000;
+}
+
+.theme-1 {
+  --main-color: #00ffff;
+}
+
+.theme-2 {
+  --main-color: #ff8c00;
+}
+
+.theme-3 {
+  --main-color: #51ff00;
+}
+
+.theme-4 {
+  --main-color: #ff00aa;
+}
+
 html {
   overflow-x: hidden;
   font-size: 62.5%;

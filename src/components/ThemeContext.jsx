@@ -1,25 +1,31 @@
-import React, { createContext, useContext, useState } from "react";
+// global context to control Dark/Light mode and Themes
+
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext();
 
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState({
-    "--bg-color": "#ffffff",
-    "--second-bg-color": "#eee",
-    "--text-color": "#000000",
-  });
+  const [theme, setTheme] = useState(null);
+  const [mode, setMode] = useState("dark-mode");
+
+  useEffect(() => {
+    document.documentElement.className = `${theme} ${mode}`;
+  }, [theme, mode]);
 
   const changeTheme = (newTheme) => {
     setTheme(newTheme);
-    Object.keys(newTheme).forEach((key) => {
-      document.documentElement.style.setProperty(key, newTheme[key]);
-    });
+  };
+
+  const toggleMode = () => {
+    setMode((prevMode) =>
+      prevMode === "dark-mode" ? "light-mode" : "dark-mode"
+    );
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, changeTheme }}>
+    <ThemeContext.Provider value={{ theme, mode, changeTheme, toggleMode }}>
       {children}
     </ThemeContext.Provider>
   );
