@@ -1,0 +1,172 @@
+#home {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 40%;
+  gap: 3rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-name {
+  font-size: clamp(16px, 10vw, 40px);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.home-profession {
+  font-size: clamp(16px, 8vw, 35px);
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+}
+
+.home-name span,
+.home-profession span {
+  color: var(--main-color);
+}
+
+.buttons-container {
+  margin-top: 3rem;
+  display: flex;
+  gap: 3rem;
+}
+
+.social-icons-container {
+  width: fit-content;
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.social-icons-container .social {
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0.1px 0.1px 4px 0.1px var(--main-color);
+  padding: 0.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.social-icons-container .social i {
+  font-size: 2.5rem;
+  color: var(--main-color);
+}
+
+.social-icons-container .social::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--second-bg-color);
+  z-index: -1;
+  transition: all 0.5s ease;
+}
+
+.social-icons-container .social:hover {
+  box-shadow: 0px 0px 6px 1px var(--main-color);
+}
+
+.social-icons-container .social:hover::before {
+  width: 100%;
+}
+
+.profile {
+  width: 100%;
+  aspect-ratio: 1/1.1;
+  position: relative;
+  padding: 5rem;
+  margin: auto;
+}
+
+.profile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5rem;
+  width: 5rem;
+  border-top: 0.7rem solid var(--main-color);
+  border-left: 0.7rem solid var(--main-color);
+}
+
+.profile::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 5rem;
+  width: 5rem;
+  border-bottom: 0.7rem solid var(--main-color);
+  border-right: 0.7rem solid var(--main-color);
+}
+
+.profile .bottom {
+  position: absolute;
+  bottom: -0.65rem;
+  right: -0.65rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  z-index: 10;
+}
+
+.profile .top {
+  position: absolute;
+  top: -0.65rem;
+  left: -0.65rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  z-index: 10;
+}
+
+.profile img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  #home {
+    grid-template-columns: 1fr;
+  }
+
+  .profile {
+    grid-row: 1;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10vh;
+  }
+
+  .home-name,
+  .home-profession,
+  .description {
+    text-align: center;
+  }
+
+  .buttons-container {
+    justify-content: center;
+  }
+
+  .social-icons-container {
+    margin: 3rem auto 0 auto;
+    justify-content: center;
+  }
+}

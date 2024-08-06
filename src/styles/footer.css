@@ -1,0 +1,81 @@
+.footer {
+  padding: 5rem 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--second-bg-color);
+  position: relative;
+  margin-top: 3rem;
+}
+
+.footer p {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.primeelements-link {
+  color: var(--main-color);
+  transition: all 0.5s;
+}
+.primeelements-link:hover {
+  color: #0f0;
+  text-decoration: underline;
+}
+
+.scroll-top {
+  background-color: var(--main-color);
+  border-radius: 0.5rem;
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-top i {
+  font-size: 3rem;
+  color: var(--bg-color);
+}
+
+/* socials icons in the footer */
+.socials-footer {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.socials-footer .social {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  padding: 0.7rem;
+  background-color: var(--bg-color);
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socials-footer .social i {
+  color: var(--main-color);
+  font-size: 2.5rem;
+}
+
+.socials-footer .social:hover {
+  box-shadow: 0.1px 0.1px 4px 0.1px var(--main-color);
+  background-color: var(--second-bg-color);
+}
+
+@media (min-width: 1050px) {
+  .footer {
+    margin-left: 0.5rem;
+    border-top-left-radius: 0.5rem;
+  }
+}

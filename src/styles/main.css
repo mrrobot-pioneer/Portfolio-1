@@ -1,0 +1,10 @@
+.main {
+  background-color: inherit;
+  margin-left: 20rem;
+}
+
+@media (max-width: 1050px) {
+  .main {
+    margin-left: 0;
+  }
+}

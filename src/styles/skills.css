@@ -1,0 +1,152 @@
+.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.skills-header {
+  font-weight: 600;
+  font-size: clamp(18px, 8vw, 50px);
+  padding: 0.8rem 0.2rem;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.skills-header span {
+  color: var(--main-color);
+}
+
+.skills-header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 0.5rem;
+  left: -0.4rem;
+  width: 100%;
+  background-color: var(--main-color);
+  border-radius: 3rem;
+}
+
+.skills-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  height: 0.5rem;
+  left: -1.1rem;
+  width: 50%;
+  background-color: var(--main-color);
+  border-radius: 3rem;
+}
+
+.skills-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2.5rem;
+  row-gap: 4rem;
+}
+
+.sk-column {
+  width: 100%;
+  border: 0.15rem solid var(--main-color);
+  border-radius: 0.5rem;
+  position: relative;
+  height: fit-content;
+}
+
+.sk-column::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: var(--second-bg-color);
+  z-index: -1;
+  transition: 0.5s 0.3s ease-in;
+  border-radius: 0.4rem;
+}
+
+.sk-column:hover::before {
+  width: 100%;
+}
+
+.sk-column-title {
+  font-size: 2rem;
+  width: fit-content;
+  margin: 0 auto 1rem auto;
+  border-bottom: 0.15rem solid var(--main-color);
+  border-right: 0.15rem solid var(--main-color);
+  border-left: 0.15rem solid var(--main-color);
+  padding: 1rem 1.5rem;
+  position: relative;
+  border-radius: 0.5rem;
+  background-color: var(--bg-color);
+}
+
+.sk-column-title::before {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--main-color);
+  border-radius: 50%;
+}
+
+.sk-column-title::after {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--main-color);
+  border-radius: 50%;
+}
+
+.container {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.container .skill {
+  width: 100%;
+  min-height: 3rem;
+}
+
+.skill-top {
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+progress {
+  width: 100%;
+  margin-top: 0.6rem;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--second-bg-color);
+  border-radius: 1.5rem;
+  height: 1rem;
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--main-color);
+  border-radius: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
